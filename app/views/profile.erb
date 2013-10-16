@@ -1,0 +1,34 @@
+<div class="container">
+  <h1><%=@user.name%>'s Profile Page</h1>
+
+  <table>
+    <tr>
+      <td>
+        <h1> Posts </h1> 
+         <% @user.posts.each do |x| %> 
+         <br>
+            <a href="/thread/<%=@user.id%>" > <%=x.title%> </a>      
+          <% end %>
+         <br>
+
+      </td>
+    </tr>
+  <tr>
+      <td> 
+        <h2> Comments </h2>
+         <% @user.comments.each do |x| %> 
+         <br>
+            <a href="/thread/<%=@user.id%>" > <%=x.title%> </a>      
+          <% end %>
+         <br>
+
+      </td>
+    </tr>
+  </table>
+
+  <br><br><br>
+    <a href="/"> Home Page  </a>
+
+</div>
+
+

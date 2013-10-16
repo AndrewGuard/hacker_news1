@@ -1,23 +1,29 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
+  <h1>Hacker News</h1>
+  
+  <% if @error %>
+    <h2> <%= @error %> </h2>
+  <% end %>
 
   <table>
+
     <tr>
-      <th>File Description</th>
-      <th>File Location</th>
+      <th>Hacker Posts</th>
     </tr>
+
     <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
+      <td> 
+         <% Post.all.each do |post|%> 
+         <br>
+          <a href="thread/<%=post.id%>" > <%=post.title%> </a>
+        <% end %>
+        
+      </td>
     </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
+
   </table>
+  <br><br><br>
+  <a href="/login" > Login Page </a><br><br>
+  <a href="/logout" > Logout </a><br><br>
+  <a href="/create_post" > Create Post </a>
 </div>
